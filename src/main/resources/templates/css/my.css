@@ -1,0 +1,28 @@
+.main, .description1, .flex-wrapper, .list-wrapper{
+    display: flex;
+    justify-content: center;
+
+}
+.list-group-item{
+    word-break: break-all;
+    display: flex;
+    justify-content: center;
+    width:150px;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+}
+.leftright {
+    width: 15%;
+}
+
+.name, .author, .date, .genre, .numberOfPages{
+    width: 100%;
+    border: 1px solid gray;
+    justify-content: center;
+    display: flex;
+}
+

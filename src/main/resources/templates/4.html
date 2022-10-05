@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Самый популярный товар у людей в 18 лет</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="css/my.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<h1>Самый популярный товар у людей в 18 лет</h1>
+<div class="description1">
+
+    <div class="leftright"></div>
+    <div class="class">
+        <div  th:each="product : ${goods}" data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example"
+              tabindex="0" >
+            <ul class="list-group list-group-horizontal" style="padding-left: 75px;">
+                <li class="list-group-item" th:text="${product.getName()}"></li>
+                <li class="list-group-item" th:text="${product.getPrice()}"></li>
+                <form th:action="@{/deleteGoods/{id}(id = ${product.getId()})}" th:method="Post">
+                    <input type="submit" value="Delete" class="btn btn-outline-primary">
+                </form>
+            </ul>
+        </div>
+        <a href="/reports" class="btn btn-primary" style="margin-top: 150px">назад</a>
+    </div>
+    <div class="leftright"></div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
