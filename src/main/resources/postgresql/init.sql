@@ -1,4 +1,5 @@
 --Заявление
+create schema if not exists public
 create table if not exists buyer
 (
     id serial PRIMARY KEY NOT NULL,

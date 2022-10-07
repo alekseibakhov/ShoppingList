@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+    <Appenders>
+        <RollingFile name="fileLogger" fileName="logs/myLogs.log" filePattern="logs/myLogs.%d{yyyy-MM-dd-HH-mm}.log" >
+            <PatternLayout>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] [%t] %c{1} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB" />
+            </Policies>
+        </RollingFile>
+
+
+        <RollingFile name="errorLogger" fileName="logs/myLogs_errors.log" filePattern="logs/myLogs_errors.%d{yyyy-MM-dd}.log" >
+            <PatternLayout>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] %X{sessionId} %c{1} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB" />
+            </Policies>
+        </RollingFile>
+
+
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+    </Appenders>
+    <Loggers>
+        <Root>
+            <AppenderRef ref="fileLogger" level="debug"/>
+            <AppenderRef ref="errorLogger" level="error" />
+            <AppenderRef ref="Console" level="debug"/>
+        </Root>
+
+        <Logger name="com.example.demo" additivity="false" level="debug">
+            <AppenderRef ref="fileLogger" />
+            <AppenderRef ref="errorLogger" level="error" />
+        </Logger>
+
+    </Loggers>
+</Configuration>
