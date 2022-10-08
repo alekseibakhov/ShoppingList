@@ -25,7 +25,7 @@ public class EntityService {
         if (Objects.nonNull(purchase.getName())) {
             Optional<Goods> optionalGoods = goodsRepo.findByName(purchase.getName().value());
             return optionalGoods.orElseGet(() -> saveGoods(purchase));
-        } throw new IllegalArgumentException("Не указано наименование товара в списке покупок");
+        } throw new IllegalArgumentException("Не указано наименование товара в списке покупок или указано некорректно");
     }
 
     Buyer getBuyer(Сustomer customer) {
