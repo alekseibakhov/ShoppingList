@@ -33,13 +33,13 @@ public class SOAPEndpoint {
             String message = "Покупка выполнена успешно!";
             response.setResponse(message);
         } catch (IllegalArgumentException ex) {
-            LOGGER.error("Error : {}", ex.getMessage());
+            LOGGER.error("Error : {}", ex.getStackTrace());
             response.setResponse(ex.getMessage());
         } catch (SQLGrammarException ex) {
-            LOGGER.error("Error : {}", ex.getMessage());
+            LOGGER.error("Error : {}", ex.getStackTrace());
             response.setResponse("Ошибка при сохранении в базу данных: " + ex.getMessage());
         } catch (Exception ex){
-            LOGGER.error("Error : {}", ex.getMessage());
+            LOGGER.error("Error : {}", ex.getStackTrace());
             response.setResponse("Внутренняя ошибка: "+ ex.getMessage());
         }
         return response;

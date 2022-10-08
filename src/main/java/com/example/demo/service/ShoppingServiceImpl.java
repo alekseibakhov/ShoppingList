@@ -22,15 +22,20 @@ public class ShoppingServiceImpl implements ShoppingService{
     public void processRequest(PostRequest request) {
         Buyer buyer = entityService.getBuyer(request.getCustomer());
 
-        for (Purchase purchase : request.getPurchaseList()) {
-            Goods goods = entityService.getGoods(purchase);
-            ShoppingList shoppingList = new ShoppingList();
-            shoppingList.setName(request.getPurchaseName());
-            shoppingList.setGoods(goods);
-            shoppingList.setBuyer(buyer);
-            shoppingList.setRegisteredAt(request.getPurchaseDate().toGregorianCalendar().getTime());
-            shoppingList.setCost(purchase.getCount()*purchase.getCost());
-            shoppingListRepository.save(shoppingList);
+        try {
+            for (Purchase purchase : request.getPurchaseList()) {
+                Goods goods = entityService.getGoods(purchase);
+                ShoppingList shoppingList = new ShoppingList();
+                shoppingList.setName(request.getPurchaseName());
+                shoppingList.setGoods(goods);
+                shoppingList.setBuyer(buyer);
+                shoppingList.setRegisteredAt(request.getPurchaseDate().toGregorianCalendar().getTime());
+                shoppingList.setCost(purchase.getCount() * purchase.getCost());
+                shoppingListRepository.save(shoppingList);
+            }
+        } catch (NullPointerException ex) {
+            throw new NullPointerException("ошибка, введены некорректные данные, проверьте правильность ввода полей имени покупки," +
+                    " покупателя, описания покупки, даты (должна соответствовать формату YYYY-mm-dd) и суммы покупки ");
         }
 
     }
