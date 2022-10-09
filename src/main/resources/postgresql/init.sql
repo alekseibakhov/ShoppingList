@@ -1,5 +1,5 @@
 --Заявление
-create schema if not exists public
+create schema if not exists public;
 create table if not exists buyer
 (
     id serial PRIMARY KEY NOT NULL,
@@ -34,3 +34,18 @@ comment on column shopping_list.registered_at is 'дата покупки';
 comment on column shopping_list.name is 'имя покупки';
 
 comment on column shopping_list.cost is 'общая стоимость покупки';
+
+INSERT INTO public.buyer (id, name, lastname, age) VALUES (1, 'Alexey', 'Bakhov', 18);
+INSERT INTO public.buyer (id, name, lastname, age) VALUES (2, 'Sergey', 'Sergun', 18);
+INSERT INTO public.buyer (id, name, lastname, age) VALUES (3, 'Vladimir', 'Ryzkov', 24);
+
+INSERT INTO public.goods (id, name, price) VALUES (1, 'Наушники', 24);
+INSERT INTO public.goods (id, name, price) VALUES (2, 'Телевизор ', 13);
+
+INSERT INTO public.shopping_list (id, buyer_id, goods_id, registered_at, name, cost) VALUES (1, 1, 1, '2022-10-10', 'Покупка1', 232);
+INSERT INTO public.shopping_list (id, buyer_id, goods_id, registered_at, name, cost) VALUES (2, 1, 2, '2022-10-10', 'Покупка1', 1555);
+INSERT INTO public.shopping_list (id, buyer_id, goods_id, registered_at, name, cost) VALUES (3, 2, 1, '2022-01-11', 'Покупка2', 23132);
+INSERT INTO public.shopping_list (id, buyer_id, goods_id, registered_at, name, cost) VALUES (4, 3, 2, '2022-01-11', 'Покупка3', 12313);
+INSERT INTO public.shopping_list (id, buyer_id, goods_id, registered_at, name, cost) VALUES (5, 3, 1, '2022-09-23', 'Покупка4', 313);
+INSERT INTO public.shopping_list (id, buyer_id, goods_id, registered_at, name, cost) VALUES (6, 1, 2, '2022-10-10', 'Покупка1', 1555);
+INSERT INTO public.shopping_list (id, buyer_id, goods_id, registered_at, name, cost) VALUES (7, 1, 2, '2022-10-10', 'Покупка1', 1555);
