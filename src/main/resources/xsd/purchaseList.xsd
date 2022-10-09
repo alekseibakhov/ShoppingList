@@ -10,7 +10,7 @@
                 <xs:element name="purchaseName" type="xs:string" minOccurs="1" maxOccurs="1"/>
                 <xs:element name="customer" type="m:сustomer" minOccurs="1" maxOccurs="1"/>
                 <xs:element name="purchaseList" type="m:purchase" minOccurs="0" maxOccurs="1000"/>
-                <xs:element name="purchase_date" type="xs:date" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="purchase_date" type="xs:date" minOccurs="1" maxOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
